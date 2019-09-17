@@ -10,5 +10,9 @@ We will also use APIs, from eventbright and ticketmaster/stubhub to find additio
 
 
 
-Ingrediants to Recipe
+Ingredients to Recipe
+The software will allow the user to input ingredients and will output recipes and diet plans that are available to be made from such ingredients. 
+We would use a food API that would provide thousands of recipes and a fitness API that chooses a suitable diet plan in relation to ingredients and lifestyle.
+We would use Facebook to find a diet suitable to the user's lifestyle in order to give them corresponding recipes.
+
 
