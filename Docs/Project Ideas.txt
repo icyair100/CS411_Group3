@@ -1,9 +1,9 @@
 Geo-location Activity Finder
 
-This software will allow the user to find activities/events that are based on ther personality/things they like(from social media).
-We will also use geo-location and weather information to find the activities/events in the area that are adaptable to local conditions.
+This software will allow the user to find activities/events that are based on ther personality/things they like(from social media ie. Facebook).
+We will also use geo-location and weather information from APIs to find the activities/events in the area that are adaptable to local conditions.
 We will login to the user's facebook with OATH to gather information about the user to find personalized activities/events.
-We will also use APIs, from eventbright and ticketmaster/stubhub to find additional events.
+We will also use APIs, from eventbright and ticketmaster/stubhub to find additional events. This program will integrate with the user's schedule/availability. The user's availability and social media information will be stored in a database. 
 
 
 
