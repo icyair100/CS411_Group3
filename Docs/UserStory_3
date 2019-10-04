@@ -3,5 +3,5 @@ As a user, I can pull up the history of previous places that I have been to:
 The program should pull up a list of locations/events that the user has been to.
 The user should be able to access them and look back on them.
 The user will be given the option to go again by adding it to their calendar.
-The program may not register what events/locations that the user actually had visited in the past.
-The program can be configured to search for phrases and images that show that the user has been to a specific place.
+However, the program may have a problem registering what events/locations that the user actually had visited in the past.
+Therefore, a solution would be for the program to be configured to search for phrases and images that show that the user has been to a specific place.
