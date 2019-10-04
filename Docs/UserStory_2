@@ -1,0 +1,4 @@
+As a user, I can personally select my interests
+If the software misses any of the user’s personal interests, the user should be able to add to their personal information, which will be logged to the database. 
+If everything goes according to plan, then the personal information should be stored in the database. 
+If the user cannot add their own interests, then there will be an option to select from a list of prewritten categories.
