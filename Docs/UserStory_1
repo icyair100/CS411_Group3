@@ -1,6 +1,7 @@
 As a user, I can log into my social media account:
 
 The user should be able to log into their personal social media account, and information will be extracted and 
-fed to our database. If everything goes according to plan, then the interests and hobbies will be form in the database.
+fed to our database. 
+If everything goes according to plan, then the interests and hobbies will be form in the database.
 These interests and hobbies will be used as keywords in searching for events and activities that the user may enjoy.
 If information is unable to be extracted from the users account, the user can personally select their interests [Select Interests user story].
