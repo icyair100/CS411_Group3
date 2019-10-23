@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCS5kPqj_Ab9VKezoDuUAU-qv9wnvZXQjI",
+    authDomain: "events-cs411.firebaseapp.com",
+    databaseURL: "https://events-cs411.firebaseio.com",
+    projectId: "events-cs411",
+    storageBucket: "events-cs411.appspot.com",
+    messagingSenderId: "1024521458752",
+    appId: "1:1024521458752:web:7f8e348415f3f2a1837ba5",
+    measurementId: "G-9HYN13DGEH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#!/view1">view1</a></li>
+    <li><a href="#!/view2">view2</a></li>
+  </ul>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+<!--user input form-->
+
+  <div class="container" id = "login-form" style="padding-bottom: 10px;">>
+    <div class="well">
+      <h3>Please sign in or create a new account</h3>
+  <form>
+  <div class="form-group">
+    <label for="InputEmail">Email address</label>
+    <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+  </div>
+
+  <button id = "sign-in-button" type="button" class="btn btn-primary btn-block">Sign In</button>
+  <button id = "create-newuser-button" type="button" class="btn btn-primary btn-block">Create New Account</button>
+  <button id = "google-login" type="button" class="btn btn-primary btn-block">Sign In With Google</button>
+
+  </form>
+      </div>
+    </div>
+<hr>
+
+  <div class="container" id = "logout-form">
+      <button id = "logout-button" type="button" class="btn btn-primary btn-block">Logout</button>
+
+  </div>
+
+  <hr>
+
+<!--  user preference form-->
+
+    <div class="container" id = "Preferences">
+    <div class="well">
+      <h3>Enter Preferences</h3>
+  <form>
+  <div class="form-group">
+    <label for="InputLocation">Location</label>
+    <input type="email" class="form-control" id="InputLocation" placeholder="Location">
+  </div>
+
+  <button id = "submit-pref" type="button" class="btn btn-primary btn-block">Submit</button>
+
+  </form>
+      </div>
+    </div>
+
+<!--  scripts-->
+  <script>
+
+    // button listeners
+    $("#create-newuser-button").click(function () {
+        var email = $("#InputEmail").val();
+        var password = $("#InputPassword").val();
+        console.log("New User =" + email + " " + password);
+        CreateNewUser(email,password )
+    });
+
+     $("#sign-in-button").click(function () {
+        var email = $("#InputEmail").val();
+        var password = $("#InputPassword").val();
+        console.log("New User =" + email + " " + password);
+        SignIn(email,password )
+    });
+
+     $("#logout-button").click(function () {
+        firebase.auth().signOut();
+        console.log('Signed Out');
+    });
+
+     $("#submit-pref").click(function () {
+        var pref = {
+          id: currentUser.uid,
+          location: $("#InputLocation").val()
+        };
+        addPreferences(pref);
+
+    });
+     
+    function addPreferences(p) {
+      //write this data to database
+       firebase.database().ref("preferences/" + p.id).set(p);
+    }
+
+    function CreateNewUser(email, password) {
+
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage);
+      });
+
+    }
+
+    function writeUserData(user) {
+      firebase.database().ref('users/' + user.uid).set({
+        email: user.email
+      });
+    }
+
+    function SignIn(email, password) {
+
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage);
+      });
+    }
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var email = user.email;
+        currentUser = user;
+        writeUserData(user);
+        console.log(currentUser.email + " has logged in");
+        // User is signed out.
+        // ...
+      }
+    });
+  </script>
+
+
+
+
+
+<!--  template-->
+
+  <div>AngularJS seed app: v<span app-version></span></div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="core/version/version.js"></script>
+  <script src="core/version/version-directive.js"></script>
+  <script src="core/version/interpolate-filter.js"></script>
+
+</body>
+</html>
