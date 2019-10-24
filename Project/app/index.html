@@ -214,7 +214,11 @@
               "&apikey=Q2cS3dXLTrdc1isqYwZIeAB7XlLz7Sso",
               function (data) {
                 console.log(data);
-                $(".api_data_tm").append(JSON.stringify(data));
+                $.each(data._embedded.events,function (index, value) {
+                    console.log(index + "::" + value.name + "::" + value.url);
+                    $(".api_data_tm").append('<li> Event Name: ' + value.name + 'Event Url: ' + value.url + '</li>');
+                })
+                // $(".api_data_tm").append(JSON.stringify(data));
 
 
               }
