@@ -93,6 +93,19 @@
 
   <hr>
 
+<!--  show events here-->
+ <div class="container" id="show-events">
+   <h1>
+     Events
+   </h1>
+   <h4>TicketMaster</h4>
+   <p class="api_data_tm"></p>
+   <h4>Eventbright</h4>
+   <p class="api_data_eb"></p>
+
+ </div>
+<hr>
+
 <!--  user preference form-->
 
     <div class="container" id = "Preferences">
@@ -145,6 +158,10 @@
     function addPreferences(p) {
       //write this data to database
        firebase.database().ref("preferences/" + p.id).set(p);
+       firebase.database().ref("users/" + currentUser.uid + "/preferences/" + p.id).set(p);
+       getLocation()
+       getEvents()
+
     }
 
     function CreateNewUser(email, password) {
@@ -175,6 +192,38 @@
         alert(errorMessage);
       });
     }
+
+    function getLocation() {
+      var userId = firebase.auth().currentUser.uid;
+
+      var locationRef = firebase.database().ref('users/' + currentUser.uid + '/preferences/' + currentUser.uid + "/location");
+      locationRef.once('value', function (snapshot) {
+        console.log(snapshot.val());
+        location_api = snapshot.val();
+        return location_api
+
+      });
+    }
+
+    function getEvents() {
+      var location = location_api;
+
+      $.getJSON(
+              "https://app.ticketmaster.com/discovery/v2/events?city=" +
+              location +
+              "&apikey=Q2cS3dXLTrdc1isqYwZIeAB7XlLz7Sso",
+              function (data) {
+                console.log(data);
+                $(".api_data_tm").append(JSON.stringify(data));
+
+
+              }
+      )
+    }
+
+
+
+
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
