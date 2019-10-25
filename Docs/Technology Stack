@@ -6,3 +6,8 @@ Angular allows for e2e testing so the code can be tested and the developer can o
 It helps create single-page applications easily in HTML. The ability to use the MVC model allows for less coding and integration issues. 
 The data binding in Angular allows a sync between the Model and View, thus making improving code efficiency. 
 Due to these reasons, we chose Angular; it becomes easier to develop our application through the MVC model method.
+
+Firebase: 
+Regarding the backend/database, we are using Firebase. Firebase, recently acquired by Google, is a web development platform and real time database
+that helps make signing up and authentication easier, by including many different methods of authentication i.e. google and various social medias. 
+It has risen in popularity mainly due to its ease of use. Firebase has large and in depth API, which is also another reason for us choosing it. 
