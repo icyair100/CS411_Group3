@@ -1,0 +1,5 @@
+User Story for Logging in:
+
+Happy Path: User accesses our event web application and logs into their Facebook account. A Facebook app request is sent to Facebook and an app token is return back to our web application. The token is used to login to Facebook and provide authorization for the web application to be use such data that we are scraping. The session id is stored in our database and allows the user to gain full access to the client-side of our web page. 
+
+We will be using Node because it allows for an easier use of the same language (javascript) throughout our entire stack. It also provides a faster execution speed compared with most other platforms. Although our group does not have a lot of experience in Node, we hope to learn a lot throughout the process. Node is also better for applications that require real time data, which is more useful than other platforms like PHP.
