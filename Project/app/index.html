@@ -9,10 +9,10 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+  <!-- <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css"> -->
+  <!-- <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css"> -->
   <link rel="stylesheet" href="app.css">
-  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <!-- <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script> -->
 
   <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -79,7 +79,7 @@
 
   <button id = "sign-in-button" type="button" class="btn btn-primary btn-block">Sign In</button>
   <button id = "create-newuser-button" type="button" class="btn btn-primary btn-block">Create New Account</button>
-  <button id = "google-login" type="button" class="btn btn-primary btn-block">Sign In With Google</button>
+  <button onclick = "google_login()" type="button" class="btn btn-primary btn-block">Sign In With Google</button>
 
   </form>
       </div>
@@ -154,6 +154,19 @@
         addPreferences(pref);
 
     });
+
+    google_login=()=> {
+      base_provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(base_provider).then(function(result){
+        console.log("Success Google account linked")
+        console.log(result)
+      }).catch(function(err){
+        console.log(err)
+        console.log("Failed to connect to google aksdakjsd klashdl kjs")
+      })
+    }
+
+
      
     function addPreferences(p) {
       //write this data to database
@@ -253,14 +266,14 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="lib/angular/angular.js"></script>
+  <!-- <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="core/version/version.js"></script>
   <script src="core/version/version-directive.js"></script>
-  <script src="core/version/interpolate-filter.js"></script>
+  <script src="core/version/interpolate-filter.js"></script> -->
 
 </body>
 </html>
