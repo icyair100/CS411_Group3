@@ -100,8 +100,11 @@
    </h1>
    <h4>TicketMaster</h4>
    <p class="api_data_tm"></p>
-   <h4>Eventbright</h4>
-   <p class="api_data_eb"></p>
+   <div id="tm_table"></div>
+   <h4>Stubhub</h4>
+   <p class="api_data_pd"></p>
+   <div id="sh_table"></div>
+
 
  </div>
 <hr>
@@ -220,6 +223,11 @@
 
     function getEvents() {
       var location = location_api;
+      var table = $('<table border="1">');
+      table.addClass("bordered");
+
+      var table2= $('<table border="1">');
+      table2.addClass("bordered");
 
       $.getJSON(
               "https://app.ticketmaster.com/discovery/v2/events?city=" +
@@ -229,13 +237,53 @@
                 console.log(data);
                 $.each(data._embedded.events,function (index, value) {
                     console.log(index + "::" + value.name + "::" + value.url);
-                    $(".api_data_tm").append('<li> Event Name: ' + value.name + 'Event Url: ' + value.url + '</li>');
-                })
+                    // $(".api_data_tm").append('<li> Event Name: ' + value.name + 'Event Url: ' + value.url + '</li>');
+
+                    var row = $("<tr><td>" + value.name + "</td><td style='width: min-content'>" +value.dates.start.localDate + "</td><td>" + value.url + "</td></tr>");
+
+                    table.append(row);
+                });
                 // $(".api_data_tm").append(JSON.stringify(data));
+                $('#tm_table').append(table);
+                table.addClass("bordered");
 
 
               }
       )
+
+      var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.stubhub.com/sellers/search/events/v3?city=" + location + "&rows=15",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer xJb9nBz1Skpv21Y7iQfS2G2x3WdM",
+        "User-Agent": "PostmanRuntime/7.18.0",
+        "Accept": "*/*",
+        "Cache-Control": "no-cache",
+        "Postman-Token": "dcc5e3ae-baa8-4b2d-b396-75e2d5644f66,020d3ae4-bcc2-44b7-a3f6-96895a9fa49c",
+        "Host": "api.stubhub.com",
+        "Accept-Encoding": "gzip, deflate",
+        "Cookie": "akacd_PR_app_api_stubhub=1575497261~rv=3~id=6401cd4636979d51074f731c519973a5",
+        "Connection": "keep-alive",
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      $.each(response.events,function (index, value) {
+            console.log(index + "::" + value.name + "::" + value.url);
+            // $(".api_data_pd").append('<li> Event Name: ' + value.name + 'Event Date: ' + value.eventDateLocal + '</li>');
+            var row = $("<tr><td>" + value.name + "</td><td>" +value.eventDateLocal + "</td><td>" + "stubhub.com/" + value.webURI + "</td></tr>");
+
+          table2.append(row);
+                })
+      // $(".api_data_pd").append(JSON.stringify(response));
+    });
+      $('#sh_table').append(table2);
+      table2.addClass("bordered");
+
     }
 
 
