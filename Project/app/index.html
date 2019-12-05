@@ -111,13 +111,15 @@
 
 <!-- The User's   preference form -->
 
-    <div class="container" id = "Preferences">
+    <div class="container" id = "Preferences" style="display: none">
     <div class="well">
       <h3>Enter Preferences</h3>
   <form>
   <div class="form-group">
     <label for="InputLocation">Location</label>
-    <input type="email" class="form-control" id="InputLocation" placeholder="Location">
+    <input type="text" class="form-control" id="InputLocation" placeholder="Location">
+    <label for="ResultNumber">How many Events</label>
+    <input type="text" class="form-control" id="ResultNumber" placeholder="Results">
   </div>
 
   <button id = "submit-pref" type="button" class="btn btn-primary btn-block">Submit</button>
@@ -152,9 +154,12 @@
      $("#submit-pref").click(function () {
         var pref = {
           id: currentUser.uid,
-          location: $("#InputLocation").val()
+          location: $("#InputLocation").val(),
+          num_results: $("#ResultNumber").val()
         };
         addPreferences(pref);
+        console.log(pref);
+        return pref;
 
     });
 
@@ -200,7 +205,11 @@
 
     function SignIn(email, password) {
 
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+        var x = document.getElementById("Preferences");
+        x.style.display = "block";
+
+      }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -223,6 +232,8 @@
 
     function getEvents() {
       var location = location_api;
+      var num_results = $("#ResultNumber").val();
+      // console.log("this is #: " + num_results);
       var table = $('<table border="1">');
       table.addClass("bordered");
 
@@ -231,7 +242,7 @@
 
       $.getJSON(
               "https://app.ticketmaster.com/discovery/v2/events?city=" +
-              location +
+              location + "&size="+ num_results +
               "&apikey=Q2cS3dXLTrdc1isqYwZIeAB7XlLz7Sso",
               function (data) {
                 console.log(data);
@@ -254,7 +265,7 @@
       var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://api.stubhub.com/sellers/search/events/v3?city=" + location + "&rows=15",
+      "url": "https://api.stubhub.com/sellers/search/events/v3?city=" + location + "&rows=" + num_results,
       "method": "GET",
       "headers": {
         "Authorization": "Bearer xJb9nBz1Skpv21Y7iQfS2G2x3WdM",
