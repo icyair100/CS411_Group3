@@ -51,7 +51,7 @@
 </script>
 </head>
 <body background="blue-snow.png"> 
-<h1 style="background-color:royalblue"><center>MasterTicket</center></h1>
+<h1 style="background-color:royalblue"><center>EventLocator</center></h1>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -78,6 +78,8 @@
   <button id = "create-newuser-button" type="button" class="btn btn-primary btn-block">Create New Account</button>
   <button id = "google-button" button onclick = "google_login()" type="button" class="btn btn-primary btn-block">Sign In With Google
   <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button>
+    <button id = "twitter-button" button onclick = "twitter_login()" type="button" class="btn btn-primary btn-block">Sign In With Twitter
+    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Twitter sign-in" src="twitter.png" /></button>
 
   </form>
       </div>
@@ -172,12 +174,30 @@
         removeElement("sign-in-button")
         removeElement("create-newuser-button")
         removeElement("google-button")
+        removeElement("twitter-login")
       }).catch(function(err){
         console.log(err)
         console.log("Failed to connect to google aksdakjsd klashdl kjs")
       })
     }
-
+    
+twitter_login=()=> {
+      base_provider = new firebase.auth.TwitterAuthProvider()
+      firebase.auth().signInWithPopup(base_provider).then(function(result){
+        var x = document.getElementById("Preferences");
+        x.style.display = "block";
+        alert("Twitter Account Successfully Linked")
+        console.log("Success Twitter account linked")
+        console.log(result)
+        removeElement("sign-in-button")
+        removeElement("create-newuser-button")
+        removeElement("google-button")
+        removeElement("twitter-button")
+      }).catch(function(err){
+        console.log(err)
+        console.log("Failed to connect to Twitter aksdakjsd klashdl kjs")
+      })
+    }
 
      
     function addPreferences(p) {
