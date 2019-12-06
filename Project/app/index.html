@@ -169,6 +169,8 @@
     google_login=()=> {
       base_provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(base_provider).then(function(result){
+        var x = document.getElementById("Preferences");
+        x.style.display = "block";
         alert("Google Account Successfully Linked")
         console.log("Success Google account linked")
         console.log(result)
