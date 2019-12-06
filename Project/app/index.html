@@ -79,7 +79,8 @@
 
   <button id = "sign-in-button" type="button" class="btn btn-primary btn-block">Sign In</button>
   <button id = "create-newuser-button" type="button" class="btn btn-primary btn-block">Create New Account</button>
-  <button onclick = "google_login()" type="button" class="btn btn-primary btn-block">Sign In With Google</button>
+  <button id = "google-button" button onclick = "google_login()" type="button" class="btn btn-primary btn-block">Sign In With Google
+  <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" /></button>
 
   </form>
       </div>
@@ -149,6 +150,8 @@
      $("#logout-button").click(function () {
         firebase.auth().signOut();
         console.log('Signed Out');
+        alert("Logged out");
+        window.location.reload();
     });
 
      $("#submit-pref").click(function () {
@@ -166,8 +169,12 @@
     google_login=()=> {
       base_provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(base_provider).then(function(result){
+        alert("Google Account Successfully Linked")
         console.log("Success Google account linked")
         console.log(result)
+        removeElement("sign-in-button")
+        removeElement("create-newuser-button")
+        removeElement("google-button")
       }).catch(function(err){
         console.log(err)
         console.log("Failed to connect to google aksdakjsd klashdl kjs")
@@ -187,16 +194,27 @@
 
     function CreateNewUser(email, password) {
 
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (result) {
+        alert("Account Successfully created")
+        console.log("Successfully created")
+        console.log(result)
+      })
         // Handle Errors here.
+        .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
         alert(errorMessage);
-      });
+      })
 
     }
-
+    
+    function removeElement(elementId) {
+    // Removes an element 
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
+    
     function writeUserData(user) {
       firebase.database().ref('users/' + user.uid).set({
         email: user.email
@@ -208,8 +226,14 @@
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
         var x = document.getElementById("Preferences");
         x.style.display = "block";
-
-      }).catch(function (error) {
+        alert("Account Successfully logged in")
+        console.log("Successfully created")
+        console.log(result)
+        removeElement("sign-in-button")
+        removeElement("create-newuser-button")
+        removeElement("google-button")
+      })
+        .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
