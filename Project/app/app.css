@@ -23,3 +23,9 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+#map {
+        width: 5000px;
+        height: 4000px;
+      }
+
