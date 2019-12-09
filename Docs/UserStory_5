@@ -1,0 +1,5 @@
+As a user, I can select how many events are displayed
+
+The user is given the option to submit a request to display the x amount of events. The x amount of events will be the ones that are most popular in their area.
+If everything goes right, a chart will be displayed under the ticketmaster and stubhub headers. Within the chart would be event header names and the url to purchase the tickets.
+If the user does not submit a request for an x number of events, 2 events would be automatically displayed with their location.
