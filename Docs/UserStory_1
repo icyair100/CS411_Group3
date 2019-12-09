@@ -1,7 +1,6 @@
 As a user, I can log into my social media account:
 
-The user should be able to log into their personal social media account, and information will be extracted and 
-fed to our database. 
-If everything goes according to plan, then the interests and hobbies will be form in the database.
-These interests and hobbies will be used as keywords in searching for events and activities that the user may enjoy.
-If information is unable to be extracted from the users account, the user can personally select their interests [Select Interests user story].
+The user should be able to log into their personal social media account through google or twitter or create their own personal account; the account information will then be extracted and fed into our database. 
+If everything goes according to plan, then the users account information will form in the database.
+The account information will grant the user access to finding events in their location through ticketmaster and stubhub. By logging in, the user will also be granted access to the map feature that conveniently displays the locations of events.
+If the user cannot log into their social media, they will have the ability to create a new account and be able to use that account from there on.
