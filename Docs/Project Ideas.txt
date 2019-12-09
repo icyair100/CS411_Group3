@@ -2,7 +2,7 @@ Geo-location Activity Finder
 
 This software will allow the user to find activities/events that are based on ther personality/things they like(from social media ie. Twitter).
 We will also use geo-location and weather information from APIs to find the activities/events in the area that are adaptable to local conditions to map on Google maps Api.
-We will login to the user's gmail and/or twitter with OATH to gather information about the user to find personalized activities/events.
+We will login to the user's gmail and/or twitter with OATH to gather information about the user and grant them access to our serivces.
 We will also use APIs, from google and ticketmaster/stubhub to find additional events. This program will integrate with the user's schedule/availability. The user's availability and social media information will be stored in a database. 
 
 
@@ -11,6 +11,7 @@ We will also use APIs, from google and ticketmaster/stubhub to find additional e
 
 
 Ingredients to Recipe
+
 The software will allow the user to input ingredients and will output recipes and diet plans that are available to be made from such ingredients. 
 We would use a food API that would provide thousands of recipes and a fitness API that chooses a suitable diet plan in relation to ingredients and lifestyle.
 We would use Facebook to find a diet suitable to the user's lifestyle in order to give them corresponding recipes.
