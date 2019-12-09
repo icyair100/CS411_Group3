@@ -1,4 +1,4 @@
-As a user, I can personally select my interests
-If the software misses any of the user’s personal interests, the user should be able to add to their personal information, which will be logged to the database. 
-If everything goes according to plan, then the personal information should be stored in the database. 
-If the user cannot add their own interests, then there will be an option to select from a list of prewritten categories.
+As a user, I can either manually type in my location or authorize googlemaps to find my location
+The user should be able to manually type in their location for us to find events in their area.
+If everything goes according to plan, then the location information should be stored and checked with the ticketmaster and stubhub api. It would then output a list of events in their area.
+If the user is unable to manually type in their location or does not know what their location is, they can allow googlemaps to locate where they are and search for events around their area.
