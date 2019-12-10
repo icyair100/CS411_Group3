@@ -1,5 +1,0 @@
-As a user, I can obtain a full calendar of events recommended to me:
-
-Once the user logs in, the user should be able to access a feature that allows them to see all recommended events pertaining to their interests and location. 
-A possible conflict is if there are no events available to the user’s location and the user’s interests. 
-A possible solution would be to provide a feature to expand the location radius and interests in a sidebar.
