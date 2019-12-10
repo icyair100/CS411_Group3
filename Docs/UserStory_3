@@ -1,7 +1,6 @@
-As a user, I can pull up the history of previous places that I have been to:
+As a user, I can view the url of the ticket:
 
-The program should pull up a list of locations/events that the user has been to.
-The user should be able to access them and look back on them.
-The user will be given the option to go again by adding it to their calendar.
-However, the program may have a problem registering what events/locations that the user actually had visited in the past.
-Therefore, a solution would be for the program to be configured to search for phrases and images that show that the user has been to a specific place.
+The program should pull up a list of locations/events that the user has interest in.
+The user should be able to access them and select the event to purchase a ticket by entering the ticketmaster or stubhub main page.
+However, the program may have a problem reaching the api of ticketmaster and stubhub if the servers go down.
+Therefore, a solution would be to display the name of the event besides the url pages and then allow the user to search the event on other vendors.
