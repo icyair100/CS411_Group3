@@ -1,0 +1,35 @@
+google_login=()=> {
+      base_provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(base_provider).then(function(result){
+        var x = document.getElementById("Preferences");
+        x.style.display = "block";
+        alert("Google Account Successfully Linked")
+        console.log("Success Google account linked")
+        console.log(result)
+        removeElement("sign-in-button")
+        removeElement("create-newuser-button")
+        removeElement("google-button")
+        removeElement("twitter-login")
+      }).catch(function(err){
+        console.log(err)
+        console.log("Failed to connect to google aksdakjsd klashdl kjs")
+      })
+    }
+    
+twitter_login=()=> {
+      base_provider = new firebase.auth.TwitterAuthProvider()
+      firebase.auth().signInWithPopup(base_provider).then(function(result){
+        var x = document.getElementById("Preferences");
+        x.style.display = "block";
+        alert("Twitter Account Successfully Linked")
+        console.log("Success Twitter account linked")
+        console.log(result)
+        removeElement("sign-in-button")
+        removeElement("create-newuser-button")
+        removeElement("google-button")
+        removeElement("twitter-button")
+      }).catch(function(err){
+        console.log(err)
+        console.log("Failed to connect to Twitter aksdakjsd klashdl kjs")
+      })
+    }
