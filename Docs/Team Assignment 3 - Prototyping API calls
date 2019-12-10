@@ -14,3 +14,6 @@ Regarding the backend/database, we are using Firebase. Firebase, recently acquir
 that helps make signing up and authentication easier, by including many different methods of authentication i.e. google and various social medias. 
 It has risen in popularity mainly due to its ease of use. Firebase has large and in depth API, which is also another reason for us choosing it. 
 
+
+We took a look at other frameworks and platforms such as Django and React but decided Angular was the way to go because Angular allows for us to easily build single-page web applications. 
+It allows us to work more as a team and understand one anothers code instead of working individually on multiple components. 
